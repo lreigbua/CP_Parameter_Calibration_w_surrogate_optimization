@@ -16,7 +16,9 @@ The first figure shows how the surrogate optimization is finding a combination o
 The current code calibrates only the plasticity parameters xi_0_sl, xi_inf_sl and h_0_sl-sl from the phenomenological crystal plasticity model in Damask. The ratios between the different slip systems and phases for each parameter are kept constant. Therefore, only 3 parameters are calibrated by the surrogate optimization model which scale the 3 plasticity constants separately:
 
 h_0_sl-sl*param(1)
+
 xi_0_sl*param(2)
+
 xi_inf_sl*param(3)
 
 ## How to Run
