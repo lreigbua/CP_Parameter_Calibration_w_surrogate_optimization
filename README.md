@@ -12,3 +12,6 @@ The first figure shows how the surrogate optimization is finding a combination o
 
 <img src="https://github.com/Strathclyde-AFRC-Computational-Sciences/Damask_CP_parameters_calibration_w_surrogate_optimization/assets/93150422/e7e857fd-6935-4ce7-8d0c-7846315b724a" height="300" width="400">
 
+## How to Run
+
+Run main.m in src folder
