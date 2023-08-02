@@ -20,7 +20,7 @@ xi_0_sl*param(2)
 xi_inf_sl*param(3)
 
 ## How to Run
-Specify inputs in config.json
+Specify inputs in config.json. You need to specify the names of the phases in your RVE and the upper and lower bounds for you param(1-3)
 
 Run main.m with matlab in src folder
 
