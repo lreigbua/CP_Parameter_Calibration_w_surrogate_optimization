@@ -6,7 +6,7 @@ function f=run_CP_model(param)
 
 %modify material
 struct_params.h0 = 200.e+6*param(1);
-struct_params.xi_0_sl = [280.e+6, 325.e+6, 0.0, 365.e+6]*param(2);
+struct_params.xi_0_sl = [340.e+6, 445.e+6, 0.0, 544.e+6]*param(2);
 struct_params.xi_inf_sl = [568.e+6, 150.e+7, 0.0, 3420.e+6]*param(3);
 
 txt = jsonencode(struct_params,PrettyPrint=true);
