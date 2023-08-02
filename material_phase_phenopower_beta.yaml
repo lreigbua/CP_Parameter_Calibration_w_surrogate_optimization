@@ -1,0 +1,22 @@
+lattice: cI
+mechanical:
+  # output: [F, P, F_e, F_p, L_p, O, sigma]
+  output: [F, P]
+  elastic: {type: Hooke, C_11: 112.10e+9, C_12: 85.10e+9, C_44: 36.70e+9}
+  plastic:
+    type: phenopowerlaw
+
+    N_sl: [12, 12, 24]   # basal, prism, -, 1. pyr<c+a>
+
+    n_sl: 20
+    a_sl: 2.0
+    dot_gamma_0_sl: 0.0023
+    h_0_sl-sl: 190.e+6
+
+    ##C. Zambaldi et al.:
+    xi_0_sl:   [500.e+6, 500.e+6, 500.e+6]
+    xi_inf_sl: [700.e+6, 700.e+6, 700.e+6]
+    ##L. Wang et al. :
+    ##xi_0_sl:   [127.e+6, 96.e+6, 0.0, 240.e+6]
+
+    h_sl-sl: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] # set by me
