@@ -14,4 +14,4 @@ run_CP_model_mart.m
 stress-strain_85_grains_4_cells.png
 stress-strain_85_grains_4_cells.txt
 src/main.asv
-data/Neper_columnar_85_grains_loadZ.C_ref
+data/

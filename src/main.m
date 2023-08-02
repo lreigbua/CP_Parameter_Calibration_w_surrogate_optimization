@@ -9,17 +9,34 @@ cd ../data/
 addpath('../input')
 addpath('../src')
 
+%create tess
+%status = system('python create_columnar_periodic_tess.py 85 4 4 4')
+
+
+%Read config.json
+config_struct = jsondecode(fileread("../input/config.json"));
+
+%save initial CP parameters as JSON fiiles
+for i=1:1:length(config_struct.phases)
+    status = system(sprintf("python ../src/save_initial_CPs_as_JSON.py %s",config_struct.phases{i}));
+end
+   
+for i=1:1:length(config_struct.phases)
+    initial_CP_data_struct(i)=jsondecode(fileread(sprintf("./initial_%s_json_data.json",config_struct.phases{i})));
+end
+
 
 %%
 %read experimental data
 data_exp=readmatrix('../input/exp_data_dual_2p5.txt');
 
+
 %specify upper and lower bounds
 ub=[2.0 1.5 1.5];
 lb=[0.5 0.5 0.25];
 
-%
-objFun = @(cp_params) stress_dif([run_CP_model(cp_params) data_exp(:,2)]);
+%Run surrogate optimization
+objFun = @(cp_params) stress_dif([run_CP_model(cp_params,initial_CP_data_struct,config_struct) data_exp(:,2)]);
 
 options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot');
 

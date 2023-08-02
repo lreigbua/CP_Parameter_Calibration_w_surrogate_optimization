@@ -21,8 +21,8 @@ N_constituents_taylor=25
 
 config_material['homogenization']['Taylor'] = {'N_constituents':N_constituents_taylor,'mechanical':{'type':'isostrain','output': ['F','P'] }}
 config_material['phase']['Alpha'] = damask.ConfigMaterial.load('material_phase_phenopower_alpha_mod.yaml')
-config_material['phase']['Martensite'] = damask.ConfigMaterial.load('../input/material_phase_phenopower_martensite.yaml')
-config_material['phase']['Beta'] = damask.ConfigMaterial.load('../input/material_phase_phenopower_beta.yaml')
+config_material['phase']['Martensite'] = damask.ConfigMaterial.load('material_phase_phenopower_martensite_mod.yaml')
+config_material['phase']['Beta'] = damask.ConfigMaterial.load('material_phase_phenopower_beta_mod.yaml')
 
 
 oris_all=np.loadtxt('../input/oris_all.txt')
