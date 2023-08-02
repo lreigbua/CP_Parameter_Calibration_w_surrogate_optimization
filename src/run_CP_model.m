@@ -10,20 +10,20 @@ struct_params.xi_0_sl = [280.e+6, 325.e+6, 0.0, 365.e+6]*param(2);
 struct_params.xi_inf_sl = [568.e+6, 150.e+7, 0.0, 3420.e+6]*param(3);
 
 txt = jsonencode(struct_params,PrettyPrint=true);
-fprintf(fopen('data_json.json','wt'),txt);
+fprintf(fopen('./data_json.json','wt'),txt);
 
-status = system('python modify_material.py')
-status = system('python create_materialYaml.py 85 4 4 4')
+status = system('python ../src/modify_material.py')
+status = system('python ../src/create_materialYaml.py 85 4 4 4')
 
 %RUN MODEL
-status = system('wsl export OMP_NUM_THREADS=16 ; DAMASK_grid --load loadZ.yaml --geom Neper_columnar_85_grains.vti');
+status = system('wsl export OMP_NUM_THREADS=16 ; DAMASK_grid --load ../input/loadZ.yaml --geom ../input/Neper_columnar_85_grains.vti');
 
 
 %EXTRACT STRES STRAIN DATA PYTHON
-status = system('python plot_stress_strain.py 85 4 4 4')
+status = system('python ../src/plot_stress_strain.py 85 4 4 4')
 
 %PLOT STRESS STRAIN
-data = readmatrix("stress-strain_85_grains_4_cells.txt");
+data = readmatrix("./stress-strain_85_grains_4_cells.txt");
 
 %Removes first row to remove 0 strain data, which gives error in division
 data(1,:)=[];

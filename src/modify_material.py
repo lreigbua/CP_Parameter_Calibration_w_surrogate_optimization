@@ -6,7 +6,7 @@ import json
 # Create Material.yaml
 config_material = damask.ConfigMaterial()
 
-config_material = damask.ConfigMaterial.load('material_phase_phenopower_alpha.yaml')
+config_material = damask.ConfigMaterial.load('../input/material_phase_phenopower_alpha.yaml')
 
 f = open('data_json.json')
 data = json.load(f)

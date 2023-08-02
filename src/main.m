@@ -1,21 +1,26 @@
 clc
 clear
 
-%experimental values
-% n=55;
-% adot=0.001;
-% ho=675;
-% ts=175;
-% to=90;
+% Change to data directory
+tmp = matlab.desktop.editor.getActive;
+cd(fileparts(tmp.Filename));
+cd ../data/
+
+addpath('../input')
+addpath('../src')
+
+
+%%
+%read experimental data
+data_exp=readmatrix('../input/exp_data_dual_2p5.txt');
+
+%specify upper and lower bounds
 ub=[2.0 1.5 1.5];
 lb=[0.5 0.5 0.25];
 
-data_exp=readmatrix('exp_data_dual_2p5.txt');
-
+%
 objFun = @(cp_params) stress_dif([run_CP_model(cp_params) data_exp(:,2)]);
-%sol = ga(objFun, 3,A,b,Aeq,beq,lb,ub,nonlcon,options);
 
-%options = optimoptions('surrogateopt','ObjectiveLimit',0.01,'PlotFcn','surrogateoptplot');
 options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot');
 
 [sol,fval,exitflag,output,trials] = surrogateopt(objFun,lb,ub,options);
