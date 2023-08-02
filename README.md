@@ -12,6 +12,16 @@ The first figure shows how the surrogate optimization is finding a combination o
 
 <img src="https://github.com/Strathclyde-AFRC-Computational-Sciences/Damask_CP_parameters_calibration_w_surrogate_optimization/assets/93150422/e7e857fd-6935-4ce7-8d0c-7846315b724a" height="300" width="400">
 
-## How to Run
+## Description
+The current code calibrates only the plasticity parameters xi_0_sl, xi_inf_sl and h_0_sl-sl from the phenomenological crystal plasticity model in Damask. The ratios between the different slip systems and phases for each parameter are kept constant. Therefore, only 3 parameters are calibrated by the surrogate optimization model which scale the 3 plasticity constants separately:
 
-Run main.m in src folder
+h_0_sl-sl*param(1)
+xi_0_sl*param(2)
+xi_inf_sl*param(3)
+
+## How to Run
+Specify inputs in config.json
+
+Run main.m with matlab in src folder
+
+the results are saved in optimized_CP.txt
