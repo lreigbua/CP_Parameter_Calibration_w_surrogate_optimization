@@ -4,7 +4,7 @@
 
 This code automatically calibrates Crystal Plasticity parameters by fitting an experimental stress-strain curve of the material to model. To do so, Damask simulations are combined with a matlab code that uses surrogate optimization (https://es.mathworks.com/discovery/surrogate-optimization.html).
 
-Matlab's surrogate optimization will try different combination of CP parameters to develop a surrogate function that mimics the behavior of the stress-strain curve and can be derived mathematically. This surrogate function is much faster to minimize since it can be derived mathematically. By fiding the minima of the surrogate function, it can make a guess of the CP parameters that minimize the difference between the simulated stress-strain and the experimental one.
+Matlab's surrogate optimization will try different combination of CP parameters to develop a surrogate function that mimics the behavior of the stress-strain curve and can be derived mathematically. This surrogate function is much faster to minimize since it can be derived mathematically. By finding the minima of the surrogate function, it can make a guess of the CP parameters that minimize the difference between the simulated stress-strain and the experimental one. With further guesses, the surrogate function will become more accurate and will eventually find a combination of CP parameters that matches well the experimental stress-strain curve.
 
 The first figure shows how the surrogate optimization is finding a combination of CP parameters that minimizes the error function, and with a higher number of simulations it gets closer to zero error. The second figure shows how the stress-strain with the calibrated parameters matches the experimental curve.
 
