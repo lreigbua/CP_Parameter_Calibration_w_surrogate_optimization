@@ -9,9 +9,9 @@ cells_x=int(sys.argv[2])
 cells_y=int(sys.argv[3])
 cells_z=int(sys.argv[4])
 
-Phase_fraction_alpha=0.91
-Phase_fraction_mart=0.0
-Phase_fraction_beta=0.09
+Phase_fraction_alpha=0.0
+Phase_fraction_mart=1.0
+Phase_fraction_beta=0.0
 
 
 

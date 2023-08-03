@@ -14,8 +14,8 @@ mechanical:
     h_0_sl-sl: 190.e+6
 
     ##C. Zambaldi et al.:
-    xi_0_sl:   [500.e+6, 500.e+6, 500.e+6]
-    xi_inf_sl: [700.e+6, 700.e+6, 700.e+6]
+    xi_0_sl:   [270.e+6, 270.e+6, 270.e+6]
+    xi_inf_sl: [540.e+6, 540.e+6, 540.e+6]
     ##L. Wang et al. :
     ##xi_0_sl:   [127.e+6, 96.e+6, 0.0, 240.e+6]
 

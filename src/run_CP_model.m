@@ -8,6 +8,7 @@ for i=1:1:length(initial_CP_data_struct)
 struct_params.h0 = initial_CP_data_struct(i).h0*param(1);
 struct_params.xi_0_sl = initial_CP_data_struct(i).xi_0_sl*param(2);
 struct_params.xi_inf_sl = initial_CP_data_struct(i).xi_inf_sl*param(3);
+struct_params.a_sl = initial_CP_data_struct(i).a_sl*param(4);
 
 txt = jsonencode(struct_params,PrettyPrint=true);
 fprintf(fopen('./data_json.json','wt'),txt);

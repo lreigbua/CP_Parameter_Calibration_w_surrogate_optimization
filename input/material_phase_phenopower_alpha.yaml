@@ -7,7 +7,7 @@ mechanical:
   plastic:
     type: phenopowerlaw
 
-    N_sl: [3, 3, 0, 12]   # basal, prism, -, 1. pyr<c+a>
+    N_sl: [3, 3, 6, 12]   # basal, prism, -, 1. pyr<c+a>
 
     n_sl: 20
     a_sl: 2.0
@@ -15,8 +15,8 @@ mechanical:
     h_0_sl-sl: 200.e+6
 
     ##C. Zambaldi et al.:
-    xi_0_sl:   [349.e+6, 150.e+6, 0.0, 600.e+6]
-    xi_inf_sl: [568.e+6, 150.e+7, 0.0, 1200.e+6]
+    xi_0_sl:   [280.e+6, 325.e+6, 330.0e+6, 365.e+6]
+    xi_inf_sl: [568.e+6, 600.e+6, 630.0e+6, 900.e+6]
     ##L. Wang et al. :
     ##xi_0_sl:   [127.e+6, 96.e+6, 0.0, 240.e+6]
 

@@ -14,18 +14,19 @@ if __name__ ==  '__main__':
 
     res = damask.Result(f'Neper_columnar_{n_grains}_grains_loadZ.hdf5')
     res.add_stress_Cauchy()
-    res.add_equivalent_Mises('sigma')
     res.add_strain()
-    res.add_equivalent_Mises('epsilon_V^0.0(F)')
 
 
     # res.export_VTK()
 
 
-    sigma = [np.average(s['homogenization']) for s in res.get('sigma_vM').values()]
-    epsilon = [np.average(e['homogenization']) for e in res.get('epsilon_V^0.0(F)_vM').values()]
+    sigma = [np.average(s['homogenization'][:,2,2]) for s in res.get('sigma').values()]
+    epsilon = [np.average(e['homogenization'][:,2,2]) for e in res.get('epsilon_V^0.0(F)').values()]
     stress_strain=np.array([epsilon,sigma])
     np.savetxt(f'stress-strain_{n_grains}_grains_{cells_x}_cells.txt',np.transpose(stress_strain))
     plt.plot(epsilon,sigma)
     plt.savefig(f'stress-strain_{n_grains}_grains_{cells_x}_cells.png')
+    # a = [np.average(e['homogenization'][2,2]) for e in res.get('epsilon_V^0.0(F)').values()]
+    # a = []
+    # print(a)
 
