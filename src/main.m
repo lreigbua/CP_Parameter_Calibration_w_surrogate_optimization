@@ -1,5 +1,7 @@
 clc
 clear
+fclose('all');
+
 
 % Change to data directory
 tmp = matlab.desktop.editor.getActive;
@@ -10,7 +12,7 @@ addpath('../input')
 addpath('../src')
 
 %create tess
-%status = system('python create_columnar_periodic_tess.py 85 4 4 4')
+% status = system('python ../src/create_columnar_periodic_tess.py 85 32 32 32')
 
 
 %Read config.json
@@ -32,28 +34,28 @@ data_exp=readmatrix('../input/exp_data_mart_2p5.txt');
 
 
 %specify upper and lower bounds
-ub=[10.0 1.9 2.0 2.0];
+ub=[10.0 3.0 2.0 2.0];
 lb=[0.05 1.0 0.05 0.25];
 
 %Run surrogate optimization
 objFun = @(cp_params) stress_dif([run_CP_model(cp_params,initial_CP_data_struct,config_struct) data_exp(:,2)]);
 
-options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',250);
+options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',600);
 
 [sol,fval,exitflag,output,trials] = surrogateopt(objFun,lb,ub,options);
 
 %% plots fitted curve:
-
 fit = run_CP_model(sol,initial_CP_data_struct,config_struct);
 figure()
 axes();
-plot(data_exp(:,1),data_exp(:,2), 'b+');
+plot(data_exp(:,1),data_exp(:,2), 'b--O','LineWidth',2);
 hold on
-plot(data_exp(:,1), fit, 'r-');
+plot(data_exp(:,1), fit, 'r-','LineWidth',2);
 % plot(data_exp(:,1), Vq/1e6, 'r-');
 legend({'Data points', 'Fitted Curve'})
 ylim([0 1400])
-
+xlim([0 3])
 
 
 writematrix(sol,'optimized_CP')
+writematrix(fit,'optimized_curve')

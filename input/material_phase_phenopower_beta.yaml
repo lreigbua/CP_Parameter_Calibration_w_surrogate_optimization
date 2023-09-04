@@ -2,7 +2,7 @@ lattice: cI
 mechanical:
   # output: [F, P, F_e, F_p, L_p, O, sigma]
   output: [F, P]
-  elastic: {type: Hooke, C_11: 112.10e+9, C_12: 85.10e+9, C_44: 36.70e+9}
+  elastic: {type: Hooke, C_11: 135.10e+9, C_12: 96.10e+9, C_44: 46.30e+9}
   plastic:
     type: phenopowerlaw
 
