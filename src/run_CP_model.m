@@ -16,18 +16,22 @@ writematrix(param,"current_sol.txt")
 txt = jsonencode(struct_params,PrettyPrint=true);
 fprintf(fopen('./data_json.json','wt'),txt);
 
-status = system(sprintf('python ../src/modify_material.py %s',config_struct.phases{i}))
+status = system(sprintf('. ../src/conda_initialise-3.9.sh && python ../src/modify_material.py %s',config_struct.phases{i}))
 end
 
 %create material.yaml
-status = system('python ../src/create_materialYaml.py 85 32 32 32')
+status = system('. ../src/conda_initialise-3.9.sh && python ../src/create_materialYaml.py 85 32 32 32')
 
 %RUN MODEL
-status = system('wsl export OMP_NUM_THREADS=16 ; DAMASK_grid --load ../input/loadZ.yaml --geom ../input/Neper_columnar_85_grains.vti');
+% status = system('wsl export OMP_NUM_THREADS=16 ; DAMASK_grid --load ../input/loadZ.yaml --geom ../input/Neper_columnar_85_grains.vti');
+
+str1 = 'DAMASK_grid --load ../input/loadZ.yaml --geom ../input/Neper_columnar_85_grains.vti';
+Run_Damask_Command_Archie(str1)
+
 
 
 %EXTRACT STRES STRAIN DATA PYTHON
-status = system('python ../src/plot_stress_strain.py 85 32 32 32')
+status = system('. ../src/conda_initialise-3.9.sh && python ../src/plot_stress_strain.py 85 32 32 32')
 
 %PLOT STRESS STRAIN
 data = readmatrix("./stress-strain_85_grains_32_cells.txt");

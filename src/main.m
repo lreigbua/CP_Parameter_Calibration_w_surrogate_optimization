@@ -12,15 +12,14 @@ addpath('../input')
 addpath('../src')
 
 %create tess
-% status = system('python ../src/create_columnar_periodic_tess.py 85 32 32 32')
-
+%status = system('. ../src/conda_initialise-3.9.sh && python ../src/create_columnar_periodic_tess.py 85 32 32 32')
 
 %Read config.json
 config_struct = jsondecode(fileread("../input/config.json"));
 
 %save initial CP parameters as JSON fiiles
 for i=1:1:length(config_struct.phases)
-    status = system(sprintf("python ../src/save_initial_CPs_as_JSON.py %s",config_struct.phases{i}));
+    status = system(sprintf(". ../src/conda_initialise-3.9.sh && python ../src/save_initial_CPs_as_JSON.py %s",config_struct.phases{i}));
 end
    
 for i=1:1:length(config_struct.phases)
@@ -34,13 +33,13 @@ data_exp=readmatrix('../input/exp_data_mart_2p5.txt');
 
 
 %specify upper and lower bounds
-ub=[10.0 3.0 2.0 2.0];
+ub=[10.0 2.3 2.0 2.0];
 lb=[0.05 1.0 0.05 0.25];
 
 %Run surrogate optimization
 objFun = @(cp_params) stress_dif([run_CP_model(cp_params,initial_CP_data_struct,config_struct) data_exp(:,2)]);
 
-options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',600);
+options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',600,'MinSurrogatePoints',40);
 
 [sol,fval,exitflag,output,trials] = surrogateopt(objFun,lb,ub,options);
 
