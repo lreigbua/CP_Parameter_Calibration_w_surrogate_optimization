@@ -27,14 +27,14 @@ for i=1:1:length(config_struct.phases)
 end
 
 
-%%
+
 %read experimental data
 data_exp=readmatrix('../input/exp_data_mart_2p5.txt');
-
+%%
 
 %specify upper and lower bounds
-ub=[10.0 2.3 2.0 2.0];
-lb=[0.05 1.0 0.05 0.25];
+ub=[10 1.1 1.1 1.1 1.1];
+lb=[0.05 0.9 0.9 0.9 0.9];
 
 %Run surrogate optimization
 objFun = @(cp_params) stress_dif([run_CP_model(cp_params,initial_CP_data_struct,config_struct) data_exp(:,2)]);
@@ -42,6 +42,8 @@ objFun = @(cp_params) stress_dif([run_CP_model(cp_params,initial_CP_data_struct,
 options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',600,'MinSurrogatePoints',40);
 
 [sol,fval,exitflag,output,trials] = surrogateopt(objFun,lb,ub,options);
+writematrix(sol,'optimized_CP')
+
 
 %% plots fitted curve:
 fit = run_CP_model(sol,initial_CP_data_struct,config_struct);
@@ -56,5 +58,5 @@ ylim([0 1400])
 xlim([0 3])
 
 
-writematrix(sol,'optimized_CP')
+
 writematrix(fit,'optimized_curve')

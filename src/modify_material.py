@@ -19,6 +19,6 @@ config_material['mechanical']['plastic']['h_0_sl-sl']=data['h0']
 config_material['mechanical']['plastic']['xi_0_sl']= data['xi_0_sl']
 config_material['mechanical']['plastic']['xi_inf_sl'] = data['xi_inf_sl']
 config_material['mechanical']['plastic']['a_sl'] = data['a_sl']
-# config_material['mechanical']['plastic']['n_sl'] = data['n_sl']
+config_material['mechanical']['plastic']['n_sl'] = data['n_sl']
 
 config_material.save(f'material_phase_phenopower_{phase_name}_mod.yaml')

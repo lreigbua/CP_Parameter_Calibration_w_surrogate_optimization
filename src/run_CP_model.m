@@ -9,7 +9,7 @@ struct_params.h0 = initial_CP_data_struct(i).h0*param(1);
 struct_params.xi_0_sl = initial_CP_data_struct(i).xi_0_sl*param(2);
 struct_params.xi_inf_sl = initial_CP_data_struct(i).xi_inf_sl*param(3);
 struct_params.a_sl = initial_CP_data_struct(i).a_sl*param(4);
-% struct_params.n_sl = initial_CP_data_struct(i).n_sl*param(5);
+struct_params.n_sl = initial_CP_data_struct(i).n_sl*param(5);
 
 writematrix(param,"current_sol.txt")
 
@@ -40,7 +40,7 @@ data = readmatrix("./stress-strain_85_grains_32_cells.txt");
 data(1,:)=[];
 
 %Interpolate to match experimental strains
-pointstointerp = linspace(0.001,0.015,15);
+pointstointerp = linspace(0.001,0.025,25);
 Vq=interp1(data(:,1),data(:,2),pointstointerp,'spline');
 
 f=Vq.'/1e6; %traspose and change to MPa

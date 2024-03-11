@@ -19,3 +19,16 @@ input/Neper_columnar_85_grain_8cells.vti
 input/Neper_columnar_85_grains.vti
 src/run_CP_model.asv
 input/Neper_columnar_85_grains.vti
+src/stress-strain_85_grains_32_cells.png
+src/stress-strain_85_grains_32_cells.txt
+src/slurm-11015389.out
+src/current_sol.txt
+src/material_phase_phenopower_beta_mod.yaml
+src/material_phase_phenopower_martensite_mod.yaml
+src/optimized_curve.txt
+current_sol.txt
+input/#material_phase_phenopower_martensite.yaml#
+input/material_phase_phenopower_alpha_old.yaml
+input/material_phase_phenopower_martensite.yaml~
+input/material_phase_phenopower_martensite_old.yaml
+src/Neper_columnar_85_grains_loadZ.C_ref
