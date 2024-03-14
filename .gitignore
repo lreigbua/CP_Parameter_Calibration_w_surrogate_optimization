@@ -15,10 +15,14 @@ stress-strain_85_grains_4_cells.png
 stress-strain_85_grains_4_cells.txt
 src/main.asv
 data/
+src/cubes_n4-8-cells-per-side_loadZ.C_ref
+src/cubes_n4-8-cells-per-side_loadZ.hdf5
+src/cubes_n4-8-cells-per-side_loadZ.sta
 input/Neper_columnar_85_grain_8cells.vti
 input/Neper_columnar_85_grains.vti
 src/run_CP_model.asv
 input/Neper_columnar_85_grains.vti
+input/nfrom_morpho-id1.vtk
 src/stress-strain_85_grains_32_cells.png
 src/stress-strain_85_grains_32_cells.txt
 src/slurm-11015389.out

@@ -14,7 +14,7 @@ dict_for_json = {}
 
 dict_for_json['h0'] = config_material['mechanical']['plastic']['h_0_sl-sl']
 dict_for_json['xi_0_sl'] = config_material['mechanical']['plastic']['xi_0_sl']
-dict_for_json['xi_inf_sl'] = config_material['mechanical']['plastic']['xi_0_sl']
+dict_for_json['xi_inf_sl'] = config_material['mechanical']['plastic']['xi_inf_sl']
 dict_for_json['a_sl'] = config_material['mechanical']['plastic']['a_sl']
 dict_for_json['n_sl'] = config_material['mechanical']['plastic']['n_sl']
 

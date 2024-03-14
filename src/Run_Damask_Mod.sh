@@ -47,7 +47,7 @@ export OPENBLAS_NUM_THREADS=1
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-DAMASK_grid --load ../input/loadZ.yaml --geom ../input/Neper_columnar_85_grains.vti
+DAMASK_grid --load ../input/loadZ.yaml --geom ../input/cubes_n4-8-cells-per-side.vti
 
 #======================================================
 # Epilogue script to record job endtime and runtime
