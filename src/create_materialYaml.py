@@ -12,24 +12,28 @@ Phase_fraction_alpha=float(sys.argv[2])
 Phase_fraction_mart=float(sys.argv[3])
 Phase_fraction_beta=float(sys.argv[4])
 
-lath_thickness = float(sys.argv[5])
+lath_thickness = float(sys.argv[5]) #alpha lath thickness
 
 # calculate hall-petch effect:
 #tau0 = tauinf + k / sqrt(l_t)
 #tauinf = given by material file
 
 #k to be specified (MPa*sqrt(um))
-k_alpha = 90.0e6
-k_beta = 120.0e6
+k_alpha = 57e6
+k_beta = 75.8e6
 #k_mart = 180
-l_th_beta = lath_thickness * Phase_fraction_beta
 
+if Phase_fraction_beta == 0:
+    l_th_beta = 1 #dummy value to avoid division by zero
+elif Phase_fraction_alpha == 0:
+    l_th_beta = 0.25 * Phase_fraction_beta / Phase_fraction_mart # to avoid divisions by zero, not really physical
+else:
+    l_th_beta = lath_thickness * Phase_fraction_beta / Phase_fraction_alpha
 
 
 #lath_thickness_alpha = lath_thickness
 #lath_thickness_mart = 0.22 um from he-xrd paper, usually constant
 #lath_thickness_beta = #lath_thickness_alpha * 0.15
-
 
 
 # load vti files:
@@ -97,40 +101,41 @@ config_material.save('material.yaml')
 
 #You can use the following code to generate a vti file with the IPF colors and phase names in each cell 
 # to be viewed in paraview, but it is not necessary to run the simulation:
-##Add IPF colors:
 
+# #Add IPF colors:
 # geom = f'../input/cubes_n{n_PBGs}-{cells_per_side}-cells-per-side.vti'      # path for geometry file
 # material_config = 'material.yaml'    # path for material.yaml
-
+# 
 # v = damask.VTK.load(geom)
 # material_ID = v.get(label='material').flatten()
-
+# 
 # ma = damask.ConfigMaterial.load(material_config)
-
+# 
 # phases = list(ma['phase'].keys())
 # info = []
-
+# 
 # for m in ma['material']:
 #     c = m['constituents'][0]
 #     phase = c['phase']
+# 
 #     info.append({'phase':   phase,
-#                  'phaseID': phases.index(phase),
-#                  'lattice': ma['phase'][phase]['lattice'],
-#                  'O':       c['O'],
+#                 'phaseID': phases.index(phase),
+#                 'lattice': ma['phase'][phase]['lattice'],
+#                 'O':       c['O'],
 #                 })
-    
+# 
 # l = np.array([0,0,1])                            # lab frame direction for IPF
-
+# 
 # IPF = np.ones((len(material_ID),3),np.uint8)
 # for i,data in enumerate(info):
 #     IPF[np.where(material_ID==i)] = \
 #     np.uint8(damask.Orientation(data['O'],lattice=data['lattice']).IPF_color(l)*255)
-    
+# 
 # v = v.set(f'IPF_{l}',IPF)
-
+# 
 # p   = np.array([d['phase'] for d in info])
 # pid = np.array([d['phaseID'] for d in info])
 # v = v.set(label='phase',data=p[material_ID],info='phase name')
 # v = v.set(label='phaseID',data=pid[material_ID],info='phase ID')
-
+# 
 # v.save(f'n{n_PBGs}_{cells_per_side}_cells_per_side_cubic_microstructure_initial_IPF+phase')

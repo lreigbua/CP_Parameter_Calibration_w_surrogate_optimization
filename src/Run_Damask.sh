@@ -11,16 +11,16 @@
 #SBATCH --export=ALL
 #
 # Run in the standard partition (queue)
-#SBATCH --partition=dev
+#SBATCH --partition=standard
 #
 # Specify project account
 #SBATCH --account=rahimi-omp
 #
 # No. of tasks required
-#SBATCH --cpus-per-task=2
+#SBATCH --cpus-per-task=1
 #
 # Specify (hard) runtime (HH:MM:SS)
-#SBATCH --time=00:20:00
+#SBATCH --time=00:59:00
 #
 # Job name
 #SBATCH --job-name=damask_test

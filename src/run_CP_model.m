@@ -4,6 +4,7 @@ function f=run_CP_model(param,initial_CP_data_struct,config_struct)
 
 global n_grains
 global cells_per_side
+global load_direction
 
 for i=1:1:length(initial_CP_data_struct)
 
@@ -23,7 +24,7 @@ status = system(sprintf('. ../src/conda_initialise-3.9.sh && python ../src/modif
 end
 
 %create material.yaml
-status = system(sprintf('. ../src/conda_initialise-3.9.sh && python ../src/create_materialYaml.py %i 0.88 0 0.12 1.8 %i', n_grains, cells_per_side))
+status = system(sprintf('. ../src/conda_initialise-3.9.sh && python ../src/create_materialYaml.py %i 0.88 0 0.12 1.42 %i', n_grains, cells_per_side))
 
 %RUN MODEL
 % status = system('wsl export OMP_NUM_THREADS=16 ; DAMASK_grid --load ../input/loadZ.yaml --geom ../input/Neper_columnar_85_grains.vti');
