@@ -2,7 +2,9 @@
 
 ## Introduction
 
-This code automatically calibrates Crystal Plasticity parameters by fitting an experimental stress-strain curve of the material to model. To do so, Damask simulations are combined with a matlab code that uses surrogate optimization (https://es.mathworks.com/discovery/surrogate-optimization.html).
+This code automatically calibrates Crystal Plasticity parameters by fitting an experimental stress-strain curve of the material to model. To do so, Damask simulations are combined with a matlab code that uses surrogate optimization (https://es.mathworks.com/discovery/surrogate-optimization.html). The cost function to minimize consists of the difference between the simulated and experimental curves:
+
+<img src="https://github.com/user-attachments/assets/91de193e-8d02-435b-9b06-2dfc1c3eb418" alt="image" width="300"/>
 
 Matlab's surrogate optimization will try different combination of CP parameters to develop a surrogate function that mimics the behavior of the stress-strain curve and can be derived mathematically. This surrogate function is much faster to minimize since it can be derived mathematically. By finding the minima of the surrogate function, it can make a guess of the CP parameters that minimize the difference between the simulated stress-strain and the experimental one. With further guesses, the surrogate function will become more accurate and will eventually find a combination of CP parameters that matches well the experimental stress-strain curve.
 
@@ -10,7 +12,8 @@ The first figure shows how the surrogate optimization is finding a combination o
 
 <img src="https://github.com/Strathclyde-AFRC-Computational-Sciences/Damask_CP_parameters_calibration_w_surrogate_optimization/assets/93150422/4f6a57ac-8fe5-461d-9061-58697c72cc36" height="300" width="400">
 
-<img src="https://github.com/Strathclyde-AFRC-Computational-Sciences/Damask_CP_parameters_calibration_w_surrogate_optimization/assets/93150422/e7e857fd-6935-4ce7-8d0c-7846315b724a" height="300" width="400">
+<img src="https://github.com/user-attachments/assets/eec3d1a5-f5f0-496a-972a-ee91d06858d3" width="600">
+
 
 ## Description
 The current code calibrates only the plasticity parameters xi_0_sl, xi_inf_sl and h_0_sl-sl from the phenomenological crystal plasticity model in Damask. The ratios between the different slip systems and phases for each parameter are kept constant. Therefore, only 3 parameters are calibrated by the surrogate optimization model which scale the 3 plasticity constants separately:
