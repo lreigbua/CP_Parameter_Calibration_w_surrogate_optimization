@@ -10,7 +10,7 @@ Matlab's surrogate optimization will try different combination of CP parameters 
 
 The first figure shows how the surrogate optimization is finding a combination of CP parameters that minimizes the error function, and with a higher number of simulations it gets closer to zero error. The second figure shows how the stress-strain with the calibrated parameters matches the experimental curve.
 
-<img src="https://github.com/Strathclyde-AFRC-Computational-Sciences/Damask_CP_parameters_calibration_w_surrogate_optimization/assets/93150422/4f6a57ac-8fe5-461d-9061-58697c72cc36" height="300" width="400">
+<img src="https://github.com/user-attachments/assets/0c04707f-86a8-4da6-ac24-252904de00e9" width="500">
 
 <img src="https://github.com/user-attachments/assets/eec3d1a5-f5f0-496a-972a-ee91d06858d3" width="600">
 
