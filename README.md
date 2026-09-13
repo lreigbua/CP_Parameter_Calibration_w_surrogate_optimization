@@ -30,3 +30,20 @@ Specify inputs in config.json. You need to specify the names of the phases in yo
 Run main.m with matlab in src folder
 
 the results are saved in optimized_CP.txt
+
+## Citation & Documentation
+
+If you use this code in your research, please cite the foundational doctoral thesis. The full text also serves as the primary documentation for this repository, containing comprehensive details on the computational model's theoretical background, architecture, and validation.
+
+**DOI:** [10.48730/pkpm-t966](https://doi.org/10.48730/pkpm-t966)
+
+```bibtex
+@phdthesis{reigbuades2026,
+  author       = {Reig Buades, Luis Miguel},
+  title        = {An integrated process-structure-property-performance modelling framework for additive layer manufacturing of Ti-6Al-4V},
+  school       = {University of Strathclyde},
+  year         = {2026},
+  doi          = {10.48730/pkpm-t966},
+  url          = {[https://doi.org/10.48730/pkpm-t966](https://doi.org/10.48730/pkpm-t966)}
+}
+```
